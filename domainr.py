@@ -21,7 +21,10 @@ sample json response from domai.nr
 
 """
 def finddomain(name):
+	""" fetch the list of available domain names; based on the query name. """
 	url = "%s%s" % ("http://domai.nr/api/json/search?q=", name)
+
+	""" connect to the network, fetch the result."""
 	try:
 		httpdata = urlopen(url).read()
 	except IOError:
