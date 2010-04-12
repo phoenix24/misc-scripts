@@ -22,7 +22,12 @@ sample json response from domai.nr
 """
 def finddomain(name):
 	url = "%s%s" % ("http://domai.nr/api/json/search?q=", name)
-	httpdata = urlopen(url).read()
+	try:
+		httpdata = urlopen(url).read()
+	except IOError:
+		print "Failed to connect to the network; maybe it's down."
+		sys.exit(-2)
+
 	jsondata = json.loads(httpdata)
 	print
 	print "fetching the results from http://domai.nr"

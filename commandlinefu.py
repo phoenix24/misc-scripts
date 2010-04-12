@@ -11,7 +11,12 @@ json format and displays them in a neat fashion.
 """
 def fetchcommands(command):
 	requesturl = "http://www.commandlinefu.com/commands/%s/json" % (command)
-	httpdata = urlopen(requesturl).read()
+	try:
+		httpdata = urlopen(requesturl).read()
+	except IOError:
+		print "Failed to connect to the network, maybe it's down."
+		sys.exit(-2)
+
 	jsondata = json.loads(httpdata)
 
 	print
