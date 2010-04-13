@@ -24,8 +24,20 @@ def addTask(task):
 
 	print 'task added'
 
+def viewTasks():
+	todotxt = open(todoFile, 'r')
+	print "current todo's are:"
+	for task in todotxt:
+		print "%s" % (task,),
+
+	print
+	
+
 if __name__ == '__main__':
 	if len(sys.argv) == 1:
 		print 'usage: todo [ new-task-to-be-added. ]'
 		sys.exit(-1)
-	addTask(sys.argv[1])
+	elif len(sys.argv) == 2 and sys.argv[1] == "showall":
+		viewTasks()
+	elif len(sys.argv) == 3 and sys.argv[1] == "new":
+		addTask(sys.argv[2])
