@@ -10,8 +10,17 @@ json format and displays them in a neat fashion.
 
 """
 def fetchcommands(command):
+	""" fetch the commadline snippets based on the command passd."""
+
 	requesturl = "http://www.commandlinefu.com/commands/%s/json" % (command)
-	httpdata = urlopen(requesturl).read()
+
+	""" make the network connection; fetch the data."""
+	try:
+		httpdata = urlopen(requesturl).read()
+	except IOError:
+		print "Failed to connect to the network, maybe it's down."
+		sys.exit(-2)
+
 	jsondata = json.loads(httpdata)
 
 	print
@@ -25,6 +34,3 @@ def fetchcommands(command):
 
 if __name__ == '__main__':
 	fetchcommands("browse/sort-by-votes")
-	
-
-	
