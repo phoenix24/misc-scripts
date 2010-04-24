@@ -25,13 +25,15 @@ def addTask(task):
 	print 'task added'
 
 def viewTasks():
-	todotxt = open(todoFile, 'r')
-	print "current todo's are:"
-	for task in todotxt:
-		print "%s" % (task,),
+	try:
+		todotxt = open(todoFile, 'r')
+		print "current todo's are:"
+		for task in todotxt:
+			print "%s" % (task,),
+	except IOError:
+		print "Failed to open the todo's file; maybe it does not exist."
 
 	print
-	
 
 if __name__ == '__main__':
 	if len(sys.argv) == 1:
