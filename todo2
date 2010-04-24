@@ -43,13 +43,13 @@ class Todo:
    def addTodo(self):
 	#project, description, status, 
 	t = (sys.argv[2], sys.argv[3], "open", dt.now(), "")
-	self.execute(""" insert into todos values (?, ?, ?, ?, ?) """, t)
+	self.cr.execute(""" insert into todos values (?, ?, ?, ?, ?) """, t)
 
 	self.cc.commit()
 	self.cr.close()
 
    def viewTodo(self):
-	self.execute("""select * from todos""")
+	self.cr.execute("""select * from todos""")
 
 	for row in self.cr: print row
 
