@@ -26,14 +26,19 @@ def getcursor():
 
 class Todo:
    def  __init__(self):
-	self.cc = sq.connect("/home/chaitanya/Projects/scripts/todos.db")
+	self.cc = sq.connect("/home/chaitanya/.todos.db")
 	self.cr = self.cc.cursor()
 
-   def execute(self, query):
+   def execute(self, query, data=None):
 	try:
-		self.cr.execute(query)
+		if data:
+			self.cr.execute(query, data)
+		else:
+			self.cr.execute(query)
+
 	except sq.OperationalError:
-		print "error occured while executing the sql-query."
+		self.cr.execute("""create table todos (project text, description text, status text, added text, updated text)""")
+		self.cc.commit()
 
    def addTodo(self):
 	#project, description, status, 
