@@ -1,0 +1,65 @@
+#!/usr/bin/env python
+import sys, os
+import sqlite3 as sq
+
+from datetime import datetime as dt
+
+class Task:
+	def __init__(self, project, description, status="open", dateadded=dt.now().strftime("%d-%m-%Y %I:%M %p")):
+		self.project = project
+		self.description = description
+		self.status = status
+		self.added = dateadded
+		self.closed = dateclosed
+
+def initialize():
+    try:
+	cc = sq.connect("todos.db")
+	cr = cc.cursor()
+	cr.execute(""" create table todos (project text, description text, status text, added text, updated text)""")
+	cc.commit()
+	cr.close()
+	print "the sqlite todo's db is succesfully created!"
+
+    except sq.OperationalError:
+	print "the todos db already exists."
+
+def getcursor():
+	cc = sq.connect("todos.db")
+	cr = cc.cursor()
+	return cr
+
+def addTask():
+	cc = sq.connect("todos.db")
+	cr = cc.cursor()
+	cr.execute(""" select * from todos""")
+
+	#id, project, description, status, 
+	t = (sys.argv[2], sys.argv[3], "open", dt.now(), "")
+	cr.execute(""" insert into todos values (?, ?, ?, ?, ?) """, t)
+	cc.commit()
+	cr.close()
+
+def viewTask():
+	cr = getcursor()
+	cr.execute("""select * from todos""")
+	for row in cr: print row
+	cr.close()
+
+if __name__ == '__main__':
+
+	if len(sys.argv) >= 2 and sys.argv[1] == 'initialize':
+		initialize()
+		sys.exit(0)
+
+	if len(sys.argv) >= 2 and sys.argv[1] == 'showall':
+		viewTask()
+		sys.exit(0)
+
+	if len(sys.argv) >= 4 and sys.argv[1] == 'add':
+		addTask()
+		sys.exit(0)
+
+	print "help | usage | upcoming!"
+	print
+	sys.exit(-1)
