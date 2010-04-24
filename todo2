@@ -4,13 +4,8 @@ import sqlite3 as sq
 
 from datetime import datetime as dt
 
-class Task:
-	def __init__(self, project, description, status="open", dateadded=dt.now().strftime("%d-%m-%Y %I:%M %p")):
-		self.project = project
-		self.description = description
-		self.status = status
-		self.added = dateadded
-		self.closed = dateclosed
+class TodoDaemon:
+	pass
 
 def initialize():
     try:
@@ -29,35 +24,42 @@ def getcursor():
 	cr = cc.cursor()
 	return cr
 
-def addTask():
-	cc = sq.connect("todos.db")
-	cr = cc.cursor()
-	cr.execute(""" select * from todos""")
+class Todo:
+   def  __init__(self):
+	self.cc = sq.connect("todos.db")
+	self.cr = self.cc.cursor()
+
+   def addTodo(self):
+	self.cr.execute(""" select * from todos""")
 
 	#id, project, description, status, 
 	t = (sys.argv[2], sys.argv[3], "open", dt.now(), "")
-	cr.execute(""" insert into todos values (?, ?, ?, ?, ?) """, t)
-	cc.commit()
-	cr.close()
+	self.cr.execute(""" insert into todos values (?, ?, ?, ?, ?) """, t)
 
-def viewTask():
-	cr = getcursor()
-	cr.execute("""select * from todos""")
-	for row in cr: print row
-	cr.close()
+	self.cc.commit()
+	self.cr.close()
+
+   def viewTodo(self):
+	self.cr.execute("""select * from todos""")
+
+	for row in self.cr: print row
+
+	self.cr.close()
 
 if __name__ == '__main__':
+
+	todo = Todo()
 
 	if len(sys.argv) >= 2 and sys.argv[1] == 'initialize':
 		initialize()
 		sys.exit(0)
 
 	if len(sys.argv) >= 2 and sys.argv[1] == 'showall':
-		viewTask()
+		todo.viewTodo()
 		sys.exit(0)
 
 	if len(sys.argv) >= 4 and sys.argv[1] == 'add':
-		addTask()
+		todo.addTodo()
 		sys.exit(0)
 
 	print "help | usage | upcoming!"
