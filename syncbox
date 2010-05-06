@@ -47,10 +47,12 @@ class SyncBoxDB:
 	for row in self.cr: print row
 
    def viewByHash(self, hashkey):
-	hashkey = " SELECT * FROM items WHERE hashcontent='%s' " %  hashkey
-	print hashkey
 
+	#for resons beyond my comprehension; this just failed to work;
+	#thus resorting to cheap and dirty hacks.
 	#self.cr.execute(""" SELECT * FROM items WHERE hashcontent='ba79b1028a7980b767946fd0924964ca3ba88a742ce8865dd29332200d9d19f6' """, hashkey)
+	hashkey = " SELECT * FROM items WHERE hashcontent='%s' " %  hashkey
+
 	self.cr.execute(hashkey) 
 	for row in self.cr: print row
 
