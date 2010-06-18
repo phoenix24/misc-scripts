@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os, os.path
+import git
 import pyinotify
 
 wm = pyinotify.WatchManager()
@@ -10,9 +11,6 @@ exclude_file = [os.path.join(os.getcwd(), '[^\.*]'),
 		'^/home/chaitanya/Projects/scripts/\.*',
 		'^/home/chaitanya/Projects/scripts/\.*\.swp']
 exclude_files = pyinotify.ExcludeFilter(exclude_file)
-
-
-
 
 class EventHandler(pyinotify.ProcessEvent):
 	def process_IN_CREATE(self, event):
