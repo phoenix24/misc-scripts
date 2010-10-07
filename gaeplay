@@ -22,8 +22,33 @@ function pageprep() {
 
 function pageclean() {
     echo "removing the tmp && paged.me.zip"
-    echo `pwd`
+    rm -rf ../page.me.zip && rm -rf ../tmp/ 
 }
+
+case "$1" in
+    "deploy")
+        pagedeploy
+        exit 0
+        ;;
+
+    "prep"  )
+        pageprep
+        exit 0
+        ;;
+
+    "clean" )
+        pageclean
+        exit 0
+        ;;
+
+    *       )
+        echo "  prep   - to initiate the deployment, extract from git archive; and sanitize"
+        echo "  deploy - to start the actual deployment"
+        exit 0
+        ;;
+esac
+
+exit 0
 
 if [[ -z $1 ]]; then
     echo "usage:"
@@ -46,5 +71,3 @@ if [[ $1 == 'clean' ]]; then
     pageclean
     exit 0
 fi
-
-
