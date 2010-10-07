@@ -49,7 +49,7 @@ class Todo:
 	self.cr.close()
 
    def viewTodo(self):
-	self.cr.execute("""select * from todos""")
+	self.execute("""select * from todos""")
 
 	for row in self.cr: print row
 
