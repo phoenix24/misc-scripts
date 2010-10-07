@@ -1,11 +1,11 @@
 #!/bin/bash
 
-function pagedeploy(){
+function deploy(){
     echo "deploying paged.me."
     cd ../tmp && play gae:deploy --gae ../gae/appengine-java-sdk-1.3.7
 }
 
-function pageprep() {
+function prep() {
     echo "checking for app git-status"
     
     status=`git diff --raw`
@@ -20,24 +20,24 @@ function pageprep() {
     git archive master --format zip > ../page.me.zip && rm -rf ../tmp/ && mkdir ../tmp && cd ../tmp && unzip ../page.me.zip 
 }
 
-function pageclean() {
+function clean() {
     echo "removing the tmp && paged.me.zip"
     rm -rf ../page.me.zip && rm -rf ../tmp/ 
 }
 
 case "$1" in
     "deploy")
-        pagedeploy
+        deploy
         exit 0
         ;;
 
     "prep"  )
-        pageprep
+        prep
         exit 0
         ;;
 
     "clean" )
-        pageclean
+        clean
         exit 0
         ;;
 
@@ -49,25 +49,3 @@ case "$1" in
 esac
 
 exit 0
-
-if [[ -z $1 ]]; then
-    echo "usage:"
-    echo "  prep   - to initiate the deployment, extract from git archive; and sanitize"
-    echo "  deploy - to start the actual deployment"
-    exit 0
-fi
-
-if [[ $1 == 'deploy' ]]; then
-    pagedeploy
-    exit 0
-fi
-
-if [[ $1 == 'prep' ]]; then
-    pageprep
-    exit 0
-fi
-
-if [[ $1 == 'clean' ]]; then
-    pageclean
-    exit 0
-fi
