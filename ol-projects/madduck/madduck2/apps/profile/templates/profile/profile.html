@@ -1,0 +1,14 @@
+{% extends "app.base.html" %}
+
+{% block body %}
+	<div class="profile">
+		{{ requser }} edit profile
+		<br/>
+		{{ requser.firstname }} {{ requser.lastname }} ({{ requser.userprofile.role }}, karma - {{ requser.userprofile.karma }}, {{ requser.userprofile.school }})
+		<br/>
+		date-joined: {{ requser.date_joined }}
+		<br/>
+		last-login: {{ requser.last_login }}
+	</div>
+{% endblock %}
+ 

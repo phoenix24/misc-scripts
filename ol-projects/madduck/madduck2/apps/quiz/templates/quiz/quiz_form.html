@@ -1,0 +1,26 @@
+{% extends "quiz/quiz.base.html" %}
+{% load i18n uni_form_tags %}
+ 
+{% block head_title %}{% blocktrans %}{{ pagetitle }}{% endblocktrans %}{% endblock %}
+
+{% block app_body %}
+{% include "quiz/timeline-quiz.html" %}
+<ul class="ullist welcome">
+  <li>
+    <div class="details">
+      <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu risus diam, eget iaculis arcu. Fusce id enim quam, vel feugiat turpis. Etiam leo nibh, egestas sed pulvinar dignissim, vulputate nec ante. Etiam nulla</span>
+    </div>
+    <div class="quizform blank">
+      <form class="quiz_new uniForm" method="POST" action="">
+        {% csrf_token %}
+        <fieldset class="inlineLabels">
+          {{ quiz_form|as_uni_form }}
+        </fieldset>
+        <div class="form_block">
+          <input type="submit" value="{{ pagetitle }}">
+        </div>
+      </form>
+    </div>
+  </li>
+</ul>
+{% endblock %}

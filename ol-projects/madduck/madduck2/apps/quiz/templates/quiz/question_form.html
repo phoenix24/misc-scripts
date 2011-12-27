@@ -1,0 +1,40 @@
+{% extends "quiz/quiz.base.html" %}
+{% load i18n uni_form_tags %}
+{% block head_title %}{{ pagetitle }}{% endblock %}
+
+{% block app_body %}
+  {% include "quiz/timeline-quiz.html" %}
+  <div class="questionEditorContainer">
+    {% if selected_question.number %}
+    <form id="quesionform" class="quiz_new" method="POST" action="{% url question_update quizobj.id selected_question.number %}">
+    {% else %}
+    <form id="quesionform" class="quiz_new" method="POST" action="{% url question_create quizobj.id %}">
+    {% endif %}
+      {% csrf_token %}
+      <div class="qbox editbox">
+        {% for field in question_form %}
+          {{ field.errors }}
+          {{ field }}
+        {% endfor %}
+      </div>
+      <div class="clear"></div>
+      <ul class="abox editbox">
+        {{ answer_formset.management_form }}
+        {% for answer_form in answer_formset.forms %}
+        <li class="answer-option">
+          {% for field in answer_form %}
+            {{ field.errors }}
+            {{ field }}
+          {% endfor %}
+          <a class="delete-answer answer-action" title="delete this answer"></a>
+        </li>
+        {% endfor %}
+        <li><a class="add-answer answer-action" title="add another answer"></a></li>
+      </ul>
+      <div class="clear"></div>
+      <div class="frmbtns">
+        <input type="submit" value="{{ pagetitle }}">
+      </div>
+    </form>
+  </div>
+{% endblock %}

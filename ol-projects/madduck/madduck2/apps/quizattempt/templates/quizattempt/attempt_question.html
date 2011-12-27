@@ -1,0 +1,44 @@
+{% extends "quizattempt/quizattempt.base.html" %}
+{% load i18n uni_form_tags %}
+{% block head_title %}{{ pagetitle }} #{{ selected_question.number }}{% endblock %}
+
+{% block app_body %}
+  {% block app_navigation %}{% endblock %}
+  {% include "quizattempt/timeline-quiz.html" %}
+  <div class="questionEditorContainer">
+    <form id="quesionform" class="quiz_new" method="POST" action="">
+      {% csrf_token %}
+      <div class="answer-type1">{{ selected_question.text }}</div>
+      <ul class="abox editbox">
+        {% for answer in answers %}
+        <li>
+          {% if selected_question.type == "Essay" %}
+          <textarea id="id_answer_{{ answer.option }}" rows="10" cols="40" name="answer">your answer here. </textarea>
+          {% else %}{% if selected_question.type == "MultipleChoice" %}
+          <input id="id_answer_{{ answer.option }}" type="radio" name="answer" value="{{ answer.option }}">
+          {% else %}{% if selected_question.type == "TrueFalse" %}
+          <input id="id_answer_{{ answer.option }}" type="radio" name="answer" value="{{ answer.option }}">
+          {% else %}{% if selected_question.type == "FillBlank" %}
+          <input id="id_answer_{{ answer.option }}" type="text" name="answer" value="{{ answer.option }}">
+          {% endif %}{% endif %}{% endif %}{% endif %}
+          <label for="id_answer_{{ answer.option }}">{{ answer.option }}</label>
+        </li>
+        {% endfor %}
+      </ul>
+      <div class="form_block">
+        <input type="hidden" name="duration" value="0000">
+        <input type="submit" value="{% trans "Sumbit Answer" %}">
+      </div>
+    </form>
+    <div class="prev-next">
+      <ul class="hnav">
+        <li class="prev last">
+          <a href="{% url attempt_question quiz_id attempt_id questions_prev_next.previous_page_number %}">previous</a>
+        </li>
+        <li class="next last">
+          <a href="{% url attempt_question quiz_id attempt_id questions_prev_next.next_page_number %}">next</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+{% endblock %}

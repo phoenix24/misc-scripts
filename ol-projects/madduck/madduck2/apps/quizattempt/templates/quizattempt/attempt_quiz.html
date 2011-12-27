@@ -1,0 +1,29 @@
+{% extends "quizattempt/quizattempt.base.html" %}
+{% load i18n uni_form_tags %}
+{% block head_title %}{{ pagetitle }}{% endblock %}
+
+{% block app_body %}
+<ul class="ullist quizlt">
+  <li>
+    <div class="details">
+      <h2><a href="{% url attempt_quiz quizobj.id %}" class="title">{{ quizobj.name }}.</a></h2>
+      <span>not published on {{ quizobj.added }}.</span>
+    </div>
+    <div id="quiz-summary" class="quiz-summary show-summary">
+      <p>class : {{ quizobj.classs }}</p>
+      <p>subject : {{ quizobj.subject }}</p>
+      <p>total hmarks : {{ quizobj.total_marks }}</p>
+      <p>total questions : {{ quizobj.total_questions }}</p>
+      <p>note : {{ quizobj.note }}</p>
+    </div>
+  </li>
+  <li>
+    <form class="quiz_new uniForm" method="POST" action="{% url attempt_quiz quizobj.id %}">
+      {% csrf_token %}
+      <div class="form_block">
+        <input type="submit" value="{% trans "start the attempt" %}">
+      </div>
+    </form>
+  </li>
+</ul>
+{% endblock %}

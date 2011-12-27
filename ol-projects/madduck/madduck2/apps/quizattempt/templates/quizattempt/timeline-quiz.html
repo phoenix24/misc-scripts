@@ -1,0 +1,22 @@
+<div class="quizOverViewContainer">
+  <ul class="quizOverView {{ selected_button }}">
+    <li class="capsule buttons">
+      <!-- on the attempts page, test-details must be implemented as a display:none or lightbox. -->
+      <a class="left details" href="#" title="quiz details">details</a>
+    </li>
+    {% for question in questions %}
+    <li class="capsule">
+      <a href="{% if attempt_id %}{% url attempt_question quiz_id attempt_id question.number %}{% endif %}" class="question {{ question.status }} {% if selected_question.id == question.id %}selected{% endif %}" title="{{ question.number }}, {{ question.status }}.">{{ question.number }}</a>
+    </li>
+    {% endfor %}
+    {% if download %}
+    <li class="capsule buttons action">
+      <a class="right download" href="#download_quiz" title="download the quiz">download</a>
+    </li>
+    {% endif %}
+    <li class="capsule buttons timer">
+      <a class="right left download time">00:00:00</a>
+      <a class="right left download ctrl">pause</a>
+    </li>
+  </ul>
+</div>

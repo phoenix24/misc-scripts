@@ -1,0 +1,36 @@
+{% extends "teaser/base.html" %}
+
+{% load i18n uni_form_tags %}
+
+{% block head_title %}{% trans "Welcome" %}{% endblock %}
+{% block body_class %}home{% endblock %}
+
+{% block tabhead %}{% endblock %}
+
+{% block body %}
+	<div class="grid_12 main teaser1">
+		<a class="btn previous" href="#" alt="previous" title="previous"></a>
+		<a class="btn next" href="#" alt="next" title="next"></a>
+		<div class="form">
+			<form class="signup uniForm" method="POST" action="">
+				{% csrf_token %}
+				<fieldset class="inlineLabels">
+					{{ subscribe_form|as_uni_form }}
+					<div class="form_block">
+						<input type="submit" value="{% trans "subscribe" %}">
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</div>
+	<div class="grid_12 steps">
+		<div style="height:0px;width:0px;">
+			<div class="teaser1"></div>
+			<div class="teaser2"></div>
+			<div class="teaser3"></div>
+			<div class="teaser4"></div>
+			<div class="teaser5"></div>
+		</div>
+	</div>
+{% endblock %}
+

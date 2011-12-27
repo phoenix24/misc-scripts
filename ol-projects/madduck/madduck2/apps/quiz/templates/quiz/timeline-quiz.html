@@ -1,0 +1,44 @@
+<div class="quizOverViewContainer">
+  <ul class="quizOverView {{ selected_button }}">
+    <li class="capsule buttons">
+      <a class="left details" href="{% if quizobj %}{% url quiz_view quizobj.id %}{% endif %}" title="quiz details">details</a>
+    </li>
+    {% for question in questions %}
+    <li class="capsule">
+      <a href="{% url question_view quizobj.id question.number %}" class="question {{ question.status }} {% if selected_question.id == question.id %}selected{% endif %}" title="{{ question.number }}, {{ question.status }}">{{ question.number }}</a>
+    </li>
+    {% endfor %}
+    <li class="capsule">
+      <a href="{% if quizobj %}{% url question_create quizobj.id %}{% endif %}" class="question create" title="add a new question.">{{ current_question }}</a>
+    </li>
+    <li class="capsule buttons action">
+      <a class="left right settings" href="{% if quizobj %}{% url quiz_settings quizobj.id %}{% endif %}" title="quiz settings">settings</a>
+    </li>
+  </ul>
+</div>
+<div id="forms_container" style="display:none;">
+  <div id="download_quiz" class="fancybox-popup">
+    <div>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu risus diam, eget iaculis arcu. Fusce id enim quam, vel feugiat turpis. Etiam leo nibh, egestas sed pulvinar dignissim, vulputate nec ante. Etiam nulla</p>
+      <div class="download-formats">
+        <a href="#" ><img src=""></a>
+        <a href="#" ><img src=""></a>
+        <a href="#" ><img src=""></a>
+      </div>
+    </div>
+  </div>
+  <div id="preview_quiz" class="fancybox-popup">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu risus diam, eget iaculis arcu. Fusce id enim quam, vel feugiat turpis. Etiam leo nibh, egestas sed pulvinar dignissim, vulputate nec ante. Etiam nulla</p>
+    <div class="buttons">
+      <a class="yes" href="#">Thank You.</a>
+    </div>
+  </div>
+</div>
+
+{% if messages %}
+<ul class="ullist msglist">
+  {% for message in messages %}
+  <li><a href="#">{{ message }}</a></li>
+  {% endfor %}
+</ul>
+{% endif %}

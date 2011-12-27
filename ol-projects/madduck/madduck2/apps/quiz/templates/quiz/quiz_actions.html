@@ -1,0 +1,6 @@
+<ul class="ulaction quizaction">
+  <li><a id="south" class="action summary" href="#">summary</a></li>
+  <li><a id="south" class="action edit" href="{% url quiz_update quizobj.id %}">edit test</a></li>
+  <li><a id="south" class="action settings" href="{% if quizobj %}{% url quiz_settings quizobj.id %}{% endif %}">edit settings</a></li>
+  <li><a id="south" class="action delete last" href="{% url quiz_delete quizobj.id %}">delete test</a></li>
+</ul>

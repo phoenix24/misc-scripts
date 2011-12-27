@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="grid_13 prefix_5 suffix_5">
+  <div class="grid_10 prefix_1 suffix_1 welcome-box">
+    <span>developers edition, what say you ?</span>
+    <div class="login-box">
+      <a href="{% url login %}">login</a>
+      <a href="{% url signup %}">signup</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

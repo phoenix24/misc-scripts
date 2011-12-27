@@ -1,0 +1,47 @@
+{% extends "quizattempt/quizattempt.base.html" %}
+{% load i18n %}
+{% block head_title %}{{ pagetitle }}{% endblock %}
+
+{% block app_body %}
+{% for quizobj in quiz_list %}
+<ul class="ullist quizlt">
+  <li>
+    <ul class="ulaction quizaction">
+      <li><a id="south" class="action summary" href="#" title="Quiz Summary">summary</a></li>
+      <li><a id="south" class="action type practice" href="#" title="Practice Quiz">quiz type</a></li>
+      <li><a id="south" class="action status published last" href="#" title="Quiz Status">status</a></li>
+    </ul>
+    <div class="details">
+      <h2><a href="{% url attempt_quiz quizobj.id %}" class="title">{{ quizobj.id }}, {{ quizobj.name }}</a></h2>
+      <span>{% if quizobj.attempted %}attempted{% else %}not attempted{% endif %}</span>
+      {% if quizobj.attempted %}<span><a href="{% url report_quiz quizobj.id %}">reports</a></span>{% endif %}
+    </div>
+    <div id="quiz-summary" class="quiz-summary hide-summary">
+      <p>owner : {{ quizobj.owner }}</p>
+      <p>subject : {{ quizobj.subject }}</p>
+      <p>class : {{ quizobj.classs }}</p>
+      <p>total_marks : {{ quizobj.total_marks }}</p>
+      <p>total_questions : {{ quizobj.total_questions }}</p>
+      <p>not published on {{ quizobj.created }}, authored by {{ quizobj.owner }}</p>
+    </div>
+  </li>
+</ul>
+{% empty %}
+<ul class="ullist welcome">
+  <li>
+    <div class="details">
+      <span>oh! since you must,  hit some tests get the ball rolling!</span>
+    </div>
+  </li>
+</ul>
+{% endfor %}
+<div id="forms_container" style="display:none;">
+  <div id="delete_quiz" class="fancybox-popup">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu risus diam, eget iaculis arcu. Fusce id enim quam, vel feugiat turpis. Etiam leo nibh, egestas sed pulvinar dignissim, vulputate nec ante. Etiam nulla</p>
+    <div class="buttons">
+      <a class="yes" href="#">Yes, Delete.</a>
+      <a class="no" href="#">No, Don't Delete Quiz.</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

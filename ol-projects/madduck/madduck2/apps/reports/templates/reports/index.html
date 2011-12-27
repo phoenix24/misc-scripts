@@ -1,0 +1,35 @@
+{% extends "reports/reports.base.html" %}
+{% load i18n %}
+
+{% block app_body %}
+{% for attempt in attempts %}
+<ul class="ullist quizlt">
+  <li>
+    <ul class="ulaction quizaction">
+      <li><a id="south" class="action summary" href="#" title="summary">summary</a></li>
+      <li><a id="south" class="action details last" href="#" title="details">details</a></li>
+    </ul>
+    <div class="details">
+      <h2><a href="{% url report_attempt attempt.quiz_id attempt.attempt %}">{{ attempt.attempt }}</a> / <a href="{% url report_quiz attempt.quiz_id %}">{{ attempt.quiz_id }}</a> <a href="#" class="title">{{ attempt.quiz.name }}.</a></h2>
+      <span>not published on {{ attempt.created }}.</span>
+    </div>
+    <div id="quiz-summary" class="quiz-summary hide-summary">
+      <p>author : {{ attempt.quiz.owner }}</p>
+      <p>subject : {{ attempt.quiz.subject }}</p>
+      <p>class : {{ attempt.quiz.classs }}</p>
+      <p>total_marks : {{ attempt.quiz.total_marks }}</p>
+      <p>total_questions : {{ attempt.quiz.total_questions }}</p>
+      <p>note : {{ attempt.quiz.note }}</p>
+    </div>
+  </li>
+</ul>
+{% empty %}
+<ul class="ullist welcome">
+  <li>
+    <div class="details">
+      <span>oh! since you must,  hit some tests get the ball rolling!</span>
+    </div>
+  </li>
+</ul>
+{% endfor %}
+{% endblock %}

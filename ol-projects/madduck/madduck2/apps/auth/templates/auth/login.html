@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load uni_form_tags %}
+
+{% block body %}
+<div class="grid_13 prefix_5 suffix_5">
+  <div class="grid_10 suffix_2 prefix_2 welcome-box">
+    <span>you'll have tell us something, to let you in. it's a give and take.</span>
+    <div class="login-box">
+    {% if form.errors %}
+      <p class="error">Sorry, that's not a valid username or password</p>
+    {% endif %}
+    <form class="loginForm" action='.' method='post'>
+      {% csrf_token %}
+      <fieldset class="inlineLabels">
+        <input class="textInput" type="text" name="username" value="username" id="username">
+        <input class="textInput" type="password" name="password" value="password" id="password">
+        <input class="submitInput" type="submit" value="let me in!" />
+        <input type="hidden" name="next" value="{{ next|escape }}" />
+      </fieldset>
+    </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

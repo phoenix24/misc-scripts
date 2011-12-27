@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block header %}
+<div class="grid_4 prefix_20 header">
+  {% if user.is_authenticated %}
+  <ul class="hnav">
+    {% if user.is_superuser %}
+    <li><a href="/admin" title="admin">admin</a></li>
+    {% endif %}
+    <li><a href="{% url profile_view %}" title="your profile">{{ user }}</a></li>
+    <li class="last"><a href="{% url logout %}" title="logout">logout</a></li>
+  </ul>
+  {% endif %}
+</div>
+{% endblock %}
+
+{% block navigation %}
+<div class="grid_24 nav-bar">
+  <ul class="hnav">
+    <li><a href="{% url home_index %}" title="home">home</a></li>
+    <li>
+      <a href="{% url quiz_index %}" title="tests">tests</a>
+      <ul class="snav">
+        <li><a href="{% url quiz_index %}">All Test's</a></li>
+        <li><a href="{% url quiz_create %}">Make New Test</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="{% url attempt_index %}" title="attempts">attempt</a>
+      <ul class="snav">
+        <li><a href="{% url attempt_index %}">all attempts</a></li>
+        <li><a href="{% url attempt_index %}">partial attempts</a></li>
+      </ul>
+    </li>
+    <li class="last">
+      <a href="{% url reports_index %}" title="reports">reports</a>
+      <ul class="snav">
+        <li><a href="{% url reports_index %}">all reports</a></li>
+        <li><a href="{% url reports_index %}">recent reports</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>
+{% endblock %}

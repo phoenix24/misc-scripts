@@ -1,0 +1,511 @@
+/* li global settings. */
+li a {
+    padding: 2px 5px;
+}
+
+/* welcome-index-page starts. */
+.welcome-box {
+    border: 8px #e0e0e0 solid;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    margin: 100px auto;
+}
+
+.login-box {
+    padding-top: 20px;
+}
+
+.login-box a {
+    padding: 2px 5px;
+    margin-left: -5px;
+}
+
+/* welcome-index-page ends. */
+/* page header starts. */
+.header {
+    padding: 3px 0;
+}
+
+/* page header ends. */
+/* navigation starts here. */
+.nav-bar {
+    margin-top: 3px;
+    margin-bottom: 20px;
+    padding: 6px 0;
+    border-bottom: #e0e0e0 1px solid;
+}
+
+ul.hnav li {
+    border-right: 1px #e0e0e0 solid;
+    float: left;
+}
+
+ul.hnav li.last {
+    border-right: none;
+}
+
+ul.hnav li:hover ul {
+    display: block;
+}
+
+ul.snav {
+    display: none;
+    position: absolute;
+    background: #E5F8FF;
+    padding: 5px 0;
+}
+
+ul.snav li {
+    float: none;
+    padding: 5px;
+    margin-bottom: 5px;
+}
+
+ul.snav a:hover, ul.snav li:hover {
+    background: #ffffff;
+}
+
+/* navigation ends here. */
+/* footer starts. */
+div.footer ul.hnav li {
+    border: none;
+    padding: 3px 5px;
+}
+
+div.footer {
+    padding: 3px 20px;
+    margin-top: 30px;
+}
+
+/* footer ends. */
+/* create a answer-option starts here. */
+a.answer-action {
+    width: 6px;
+    height: 12px;
+    float: right;
+    margin: 5px;
+    cursor: pointer;
+}
+
+a.add-answer {
+    background: url(http://static.tst.it/img/add.png);
+    margin: 5px 10px;
+}
+
+a.delete-answer {
+    background: url(http://static.tst.it/img/delete.png);
+}
+
+.editbox {
+    margin: 5px 0;
+    width: 500px;
+}
+
+.editbox input[type = text] {
+    width: 300px;
+}
+
+.editbox textarea {
+    width: 500px;
+    height: 50px;
+    margin: 5px 0 0 0;
+}
+
+.abox li.answer-option {
+    padding: 3px 5px;
+}
+
+.abox li.answer-option:hover {
+    background: #E0E0E0; /*#6D84B4; #3B5998;*/
+}
+
+/* create a question ends here. */
+div.mainbody {
+    margin-left: 5px;
+    margin-right: 295px;
+}
+
+body.quiz div.expand div.mainbody {
+    margin-right: 95px;
+}
+
+ul.ullist > li {
+    margin: 0 0 5px;
+    padding: 5px 5px 5px;
+    background: #F5F5F5;
+    border: 1px solid #DDDDDD;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+}
+
+ul.ullist > li:hover {
+    background: #e0e0e0;
+}
+
+ul.ullist li.incomplete {
+    border-right: 5px #FD0E35 solid;
+}
+
+ul.ullist li.incomplete:hover {
+    border-right: 10px #FD0E35 solid;
+}
+
+ul.ullist li.complete {
+    border-right: 5px #008000 solid;
+}
+
+ul.ullist li.complete:hover {
+    border-right: 10px #008000 solid;
+}
+
+/* @TODO refactor/optimize */
+ul.sidebarst > li {
+    padding: 3px;
+    margin: 0 0 -1px 0;
+    border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-left: 0px;
+    border-right: 0px;
+}
+
+/* 'display:block' is NOT redundant definition; it controls the gap between two text lines,
+ * certainly i should use something else. */
+ul.ullist .details span {
+    font-size: 10px;
+    font-style: italic;
+    padding: 0px 5px;
+}
+
+ul.quizlt .details h2 a.title {
+    font-size: 13px;
+}
+
+ul.quizlt li.settings {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+ul.ullist .details h2 a.title:hover, ul.ullist ul.ulaction li a.action:hover {
+    text-decoration: underline;
+    background: none;
+}
+
+ul.ullist ul.ulaction {
+    float: right;
+    margin-top: -3px;
+}
+
+/* @TODO refactor/optimize */
+ul.ullist ul.ulaction li {
+    display: inline;
+    visibility: hidden;
+}
+
+/* @TODO refactor/optimize */
+ul.ullist > li:hover ul.ulaction li {
+    visibility: inherit;
+}
+
+ul.ullist ul.ulaction li a.action {
+    display: inline;
+    color: #666666;
+    font-size: 10px;
+    margin: 0 !important;
+    padding: 0px 5px;
+    border-right: 1px solid #666666;
+}
+
+ul.ullist ul.ulaction li a.move-up {
+    background: url(http://static.tst.it/img/arrow_up.png);
+}
+
+ul.ullist ul.ulaction li a.move-down {
+    background: url(http://static.tst.it/img/arrow_down.png);
+}
+
+/* @TODO refactor, make it generic. */
+ul.ullist ul.ulaction li a.last {
+    border-right: none;
+}
+
+/* for the notices and messages. */
+ul.msglist > li, ul.msglist > li:hover {
+    background: #E5F8FF;
+    border: 1px #E5F8FF solid; /*#238DB1*/
+    cursor: pointer;
+}
+
+div.sidebar {
+    float: right;
+    width: 260px;
+    padding: 0 5px 0 12px;
+}
+
+body.quiz div.expand div.sidebar {
+    width: 60px;
+}
+
+div.collapsible {
+    float: left;
+    margin-left: -12px;
+    height: 400px;
+    padding: 0 2px;
+    background: #DDDDDD;
+    cursor: e-resize;
+}
+
+body.quiz div.expand div.collapsible {
+    cursor: w-resize;
+}
+
+.collapsible-border {
+    border-left: 1px #666666 solid;
+    border-right: 1px #666666 solid;
+}
+
+ul.box {
+    color: #666666;
+    background: #F5F5F5;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: 1px solid #DDDDDD;
+}
+
+ul.box li.header {
+    padding: 5px;
+    background: #cccccc;
+}
+
+ul.box li.header h2 {
+    font-size: 13px;
+}
+
+ul.announcement {
+    background: #EAF2F5;
+    border-color: #BEDCE7;
+}
+
+ul.announcement li.header div.collapsed {
+    display: none;
+}
+
+ul.announcement li.header, ul.announcement li.header h2 {
+    border: none;
+    padding-bottom: 2px;
+    background: #EAF2F5;
+}
+
+ul.welcome {
+    padding: 10px 10px 20px 10px;
+    background: #EAF2F5;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: 1px solid #BEDCE7;
+}
+
+/* @TODO refactor/optimize */
+ul.welcome li, ul.welcome li:hover {
+    border: none;
+    background: none;
+}
+
+ul.welcome ul.ulaction {
+    float: right;
+    margin-top: -10px;
+    margin-right: -10px;
+}
+
+ul.welcome .details span {
+    font-size: 12px;
+    font-style: normal;
+}
+
+.quiz-summary {
+    display: none;
+    padding: 5px 0 10px 0;
+}
+
+.show-summary {
+    display: block;
+}
+
+/** QUIZ OVERVIEW START HERE **/
+div.quizOverViewContainer {
+    margin: 0 0 5px 0;
+    padding: 5px 0;
+}
+
+div.quizOverViewContainer ul {
+    height: 50px;
+}
+
+div.quizOverViewContainer ul.steps a {
+    color: #666;
+    float: left;
+    margin-right: 20px;
+    border: 2px solid #e5e5e5;
+}
+
+div.quizOverViewContainer ul.steps a.active {
+    background: #e5e5e5;
+}
+
+div.quizOverViewContainer ul.steps a:hover {
+    background: #F5F5F5;
+}
+
+div.quizOverViewContainer ul.steps span.nos {
+    padding: 0 8px 0 5px;
+    font-size: 34px;
+    float: left;
+}
+
+div.quizOverViewContainer ul.steps span.details {
+    padding: 5px;
+    float: right;
+}
+
+/* @TODO refactor/optimize */
+ul.quizOverView li {
+    float: left;
+}
+
+ul.quizOverView li.capsule a.question {
+    height: 18px;
+    padding: 5px 4px;
+    margin-left: -1px;
+    border-right: 1px #DDDDDD solid;
+}
+
+ul.quizOverView li.capsule a.incomplete {
+    border-bottom: 5px #FD0E35 solid;
+}
+
+ul.quizOverView li.capsule a.complete {
+    border-bottom: 5px #008000 solid;
+}
+
+ul.quizOverView li.capsule a.selected {
+    height: 20px;
+    padding: 7px 6px;
+    margin-left: -1px;
+    border-top: 2px #000000 solid;
+    border-left: 2px #000000 solid;
+    border-right: 2px #000000 solid;
+    background: #dddddd;
+}
+
+ul.quizOverView li.capsule a.question:hover {
+    background: #dddddd;
+}
+
+ul.quizOverView li.capsule a.create {
+    background: url(http://static.tst.it/img/add.png) no-repeat;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+ul.quizOverView li.capsule a.create:hover {
+    background: #dddddd url(http://static.tst.it/img/add.png) no-repeat;
+}
+
+ul.quizOverView li.action {
+    float: right;
+}
+
+ul.quizOverView li.buttons a {
+    padding: 5px;
+    color: #666666;
+    border: 1px #DDDDDD solid;
+    background: #F5F5F5;
+}
+
+ul.quizOverView li.buttons a:hover {
+    background: #e0e0e0;
+}
+
+ul.quizOverView li.buttons a.right {
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+    -moz-border-radius-topright: 4px;
+    -moz-border-radius-bottomright: 4px;
+}
+
+ul.quizOverView li.buttons a.left {
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-bottomleft: 4px;
+}
+
+ul.create li.capsule a.create, ul.details li.buttons a.details, ul.settings li.buttons a.settings {
+    padding: 7px;
+    color: #666666;
+    border: 2px #000000 solid;
+    background: #e0e0e0;
+}
+
+ul.quizOverView li.timer {
+    float: right;
+}
+ul.quizOverView li.timer a {
+    padding: 10px;
+    border: none;
+    font-size: 25px;
+    color: #238DB1;
+    background: #E5F8FF;
+}
+ul.quizOverView li.timer a:hover {
+    background: #D4F1FA;
+}
+
+/* needs to be re-factored; same definition occurs 3 times. */
+ul.create li.capsule a.create {
+    background: #dddddd url(http://static.tst.it/img/add.png) no-repeat;
+}
+
+/** QUIZ OVERVIEW ENDS HERE **/
+div.buttons a.yes, div.buttons a.no {
+    margin-right: 15px;
+    text-decoration: underline;
+}
+
+/** QUIZ TEMPLATES STARTS HERE **/
+ul.welcome li.template {
+    float: left;
+}
+
+ul.welcome li.template a.thumb img {
+    margin: 3px;
+    padding: 3px;
+    border: 1px #DDDDDD solid;
+}
+
+/* to be moved to a much appropriate place. */
+.uniForm .inlineLabels textarea {
+    max-width: 99%;
+    width: 99%;
+}
+
+/* fancybox-pop styling starts-here; to be optimized; removed*/
+div.fancybox-popup {
+    width: 400px;
+    height: 400px;
+}
+
+div#download_quiz {
+    height: 200px;
+}
+
+div.fancybox-popup .download-formats a {
+    margin: 20px;
+}
+
+/* fancybox-pop styling ends-here; */
+/* to-be-removed. */
+ul.quizOverView li.capsule div.status {
+    padding: 3px;
+    background: #008000;
+}
+* /

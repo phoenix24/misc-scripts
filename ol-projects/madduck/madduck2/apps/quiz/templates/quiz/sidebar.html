@@ -1,0 +1,326 @@
+================quiz.base.html================
+	<div class="sidebar">
+		<div class="collapsible"></div>
+		{% block sidebar0 %}{% endblock %}
+		{% block sidebar1 %}{% endblock %}
+		{% block sidebar2 %}{% endblock %}
+	</div>
+
+================create_question.html================
+{% block sidebar0 %}
+	<ul class="ullist box announcement">
+		<li class="header">
+			<ul class="ulaction activityaction">
+				<li><a href="#" class="action close last">close</a></li>
+			</ul>
+			<h2> announcment stream </h2>
+			<div class="details">
+				<span class="question">this is a new announcement, this is a new announcement, this is a new announcement, </span>
+			</div>
+			<div class="details collapsed">
+				<a href="#">a</a>
+			</div>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block sidebar1 %}
+	<ul class="ullist box sidebarst questionlist">
+		<li class="header">
+			<h2>Quiz #3</h2>
+		</li>
+		{% for event in events %}
+		<li>
+			<ul class="ulaction questionlist">
+				<li><a href="#" class="action type last">multi choice</a></li>
+			</ul>
+			<div class="details">
+				<h2><a href="#" class="">{{ forloop.counter }} question.</a></h2>
+				<span class="question">question summary/info.</span>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+================delete_question.html================
+{% block sidebar0 %}
+    <ul class="ullist box announcement">
+        <li class="header">
+            <ul class="ulaction activityaction">
+                <li><a href="#" class="action close last">close</a></li>
+            </ul>
+            <h2> announcment stream </h2>
+            <div class="details">
+                <span class="question">this is a new announcement, this is a new announcement, this is a new announcement, </span>
+            </div>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block sidebar1 %}
+    <ul class="ullist box sidebarst">
+        <li class="header">
+            <h2> activity stream </h2>
+        </li>
+        {% for user in activity %}
+        <li>
+            <ul class="ulaction activityaction">
+                <li><a href="#" class="action reply" title="reply to this question">reply</a></li>
+                <li><a id="west" href="ignore" class="action ignore last" title="ignore this question">ignore</a></li>
+            </ul>
+            <div class="details">
+                <h2><a href="#" class="title">Subhash K.</a></h2>
+                <span class="question">question question question question question question question question question </span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block sidebar2 %}
+    <ul class="ullist box sidebarst">
+        <li class="header">
+            <h2>current tests</h2>
+        </li>
+        {% for event in events %}
+        <li>
+            <ul class="ulaction eventsaction">
+                <li><a href="#" class="action type">quiz type</a></li>
+                <li><a href="ignore" class="action status last">status</a></li>
+            </ul>
+            <div class="details">
+                <h2><a href="#" class="title">{{ forloop.counter }} Unit Test.</a></h2>
+                <span class="question">question paper summary/info.</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+================update_question.html================
+{% block sidebar0 %}
+    <ul class="ullist box announcement">
+        <li class="header">
+            <ul class="ulaction activityaction">
+                <li><a href="#" class="action close last">close</a></li>
+            </ul>
+            <h2> announcment stream </h2>
+            <div class="details">
+                <span class="question">this is a new announcement, this is a new announcement, this is a new announcement, </span>
+            </div>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block sidebar1 %}
+    <ul class="ullist box sidebarst questionlist">
+        <li class="header">
+            <h2>Quiz #3</h2>
+        </li>
+        {% for event in events %}
+        <li>
+            <ul class="ulaction questionlist">
+                <li><a href="#" class="action type last">multi choice</a></li>
+            </ul>
+            <div class="details">
+                <h2><a href="#" class="">{{ forloop.counter }} question.</a></h2>
+                <span class="question">question summary/info.</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+================view_question.html================
+{% block sidebar0 %}
+    <ul class="ullist box announcement">
+        <li class="header">
+            <ul class="ulaction activityaction">
+                <li><a href="#" class="action close last">close</a></li>
+            </ul>
+            <h2> announcment stream </h2>
+            <div class="details">
+                <span class="question">this is a new announcement, this is a new announcement, this is a new announcement, </span>
+            </div>
+        </li>
+    </ul>
+{% endblock %}
+
+{% block sidebar1 %}
+    <ul class="ullist box sidebarst">
+        <li class="header">
+            <h2> activity stream </h2>
+        </li>
+        {% for user in activity %}
+        <li>
+            <ul class="ulaction activityaction">
+                <li><a href="#" class="action reply" title="reply to this question">reply</a></li>
+                <li><a id="west" href="ignore" class="action ignore last" title="ignore this question">ignore</a></li>
+            </ul>
+            <div class="details">
+                <h2><a href="#" class="title">Subhash K.</a></h2>
+                <span class="question">question question question question question question question question question </span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block sidebar2 %}
+    <ul class="ullist box sidebarst">
+        <li class="header">
+            <h2>current tests</h2>
+        </li>
+        {% for event in events %}
+        <li>
+            <ul class="ulaction eventsaction">
+                <li><a href="#" class="action type">quiz type</a></li>
+                <li><a href="ignore" class="action status last">status</a></li>
+            </ul>
+            <div class="details">
+                <h2><a href="#" class="title">{{ forloop.counter }} Unit Test.</a></h2>
+                <span class="question">question paper summary/info.</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+================view_quiz_all.html================
+{% block sidebar0 %}
+	<ul class="ullist box announcement">
+		<li class="header">
+			<ul class="ulaction activityaction">
+				<li><a href="#" class="action close last">close</a></li>
+			</ul>
+			<h2> announcment stream </h2>
+			<div class="details">
+				<span class="question">this is a new announcement, this is a new announcement, this is a new announcement, </span>
+			</div>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block sidebar1 %}
+	<ul class="ullist box sidebarst">
+		<li class="header">
+			<h2> activity stream </h2>
+		</li>
+		{% for user in activity %}
+		<li>
+			<ul class="ulaction activityaction">
+				<li><a href="#" class="action reply" title="reply to this question">reply</a></li>
+				<li><a id="west" href="ignore" class="action ignore last" title="ignore this question">ignore</a></li>
+			</ul>
+			<div class="details">
+				<h2><a href="#" class="title">Subhash K.</a></h2>
+				<span class="question">question question question question question question question question question </span>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+
+{% block sidebar2 %}
+	<ul class="ullist box sidebarst">
+		<li class="header">
+			<h2>current tests</h2>
+		</li>
+		{% for event in events %}
+		<li>
+			<ul class="ulaction eventsaction">
+				<li><a href="#" class="action type">quiz type</a></li>
+				<li><a href="ignore" class="action status last">status</a></li>
+			</ul>
+			<div class="details">
+				<h2><a href="#" class="title">{{ forloop.counter }} Unit Test.</a></h2>
+				<span class="question">question paper summary/info.</span>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+================create_question.html================
+{% block sidebar0 %}
+	<ul class="ullist box announcement">
+		<li class="header">
+			<ul class="ulaction activityaction">
+				<li><a href="#" class="action close last">close</a></li>
+			</ul>
+			<h2> announcment stream </h2>
+			<div class="details">
+				<span class="question">this is a new announcement, this is a new announcement, this is a new announcement, </span>
+			</div>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block sidebar1 %}
+	<ul class="ullist box sidebarst questionlist">
+		<li class="header">
+			<h2>Quiz #3</h2>
+		</li>
+		{% for event in events %}
+		<li>
+			<ul class="ulaction questionlist">
+				<li><a href="#" class="action type last">multi choice</a></li>
+			</ul>
+			<div class="details">
+				<h2><a href="#" class="">{{ forloop.counter }} question.</a></h2>
+				<span class="question">question summary/info.</span>
+			</div>
+		</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
+================index.html================
+{% block sidebar0 %}
+	<ul class="ullist box announcement">
+		<li class="header">
+			<ul class="ulaction activityaction">
+				<li><a href="#" class="action close last">close</a></li>
+			</ul>
+			<h2> announcment stream </h2>
+			<div class="details">
+				<span class="question">this is a new announcement, this is a new announcement, this is a new announcement, </span>
+			</div>
+		</li>
+	</ul>
+{% endblock %}
+
+{% block sidebar1 %}
+	<ul class="ullist box sidebarst">
+		<li class="header">
+			<h2> activity stream </h2>
+		</li>
+		{## % for user in activity % ##}
+		<li>
+			<ul class="ulaction activityaction">
+				<li><a href="#" class="action help">help</a></li>
+				<li><a href="#" class="action close last">close</a></li>
+			</ul>
+			<div class="details">
+				<h2><a href="#" class="title">Welcome</a></h2>
+				<span class="question" style="margin: 45px 0;">[ welcome to the activity stream-box. ]</span>
+			</div>
+		</li>
+		{## % endfor % ##}
+	</ul>
+{% endblock %}
+	
+{% block sidebar2 %}
+	<ul class="ullist box sidebarst">
+		<li class="header">
+			<h2>current tests</h2>
+		</li>
+		{## % for event in events % ##}
+		<li>
+			<ul class="ulaction eventsaction">
+				<li><a href="#" class="action help">help</a></li>
+				<li><a href="#" class="action close last">close</a></li>
+			</ul>
+			<div class="details">
+				<h2><a href="#" class="title">Welcome.</a></h2>
+				<span class="question" style="margin: 45px 0;">[ welcome to the current stream-box. ]</span>
+			</div>
+		</li>
+		{## % endfor % ##}
+	</ul>
+{% endblock %}

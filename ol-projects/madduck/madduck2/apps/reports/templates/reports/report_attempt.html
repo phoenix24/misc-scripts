@@ -1,0 +1,48 @@
+{% extends "reports/reports.base.html" %}
+{% load i18n %}
+
+{% block app_body %}
+<ul class="ullist quizlt">
+  <li>
+    <div class="details">
+      <div id="holder1"></div>
+      <span>not published on {{ attempt.created }}.</span>
+      <div id="holder2"></div>
+    </div>
+  </li>
+</ul>
+<ul class="ullist quizlt">
+  <li>
+    <ul class="ulaction quizaction">
+      <li><a id="south" class="action summary" href="#" title="summary">summary</a></li>
+      <li><a id="south" class="action details last" href="#" title="details">details</a></li>
+    </ul>
+    <div class="details">
+      <h2><a href="{% url report_attempt attempt.quiz_id attempt.attempt %}">{{ attempt.attempt }}</a> / <a href="{% url report_quiz attempt.quiz_id %}">{{ attempt.quiz_id }}</a> <a href="#" class="title">{{ attempt.quiz.name }}.</a></h2>
+      <span>not published on {{ attempt.created }}.</span>
+    </div>
+    <div id="quiz-summary" class="quiz-summary hide-summary">
+      <p>author : {{ attempt.quiz.owner }}</p>
+      <p>subject : {{ attempt.quiz.subject }}</p>
+      <p>class : {{ attempt.quiz.classs }}</p>
+      <p>total_marks : {{ attempt.quiz.total_marks }}</p>
+      <p>total_questions : {{ attempt.quiz.total_questions }}</p>
+      <p>note : {{ attempt.quiz.note }}</p>
+    </div>
+  </li>
+</ul>
+<ul class="ullist quizlt">
+  {% for question in attempt.attempt_questions.all %}
+  <li>
+    <ul class="ulaction quizaction">
+      <li><a id="south" class="action type last" href="#" title="Question Type">multi-choice</a></li>
+    </ul>
+    <div class="details">
+      <h2>{{ question.number }} <a href="#" class="title">{{ question.question.text }}.</a></h2>
+      <input type="hidden" name="qduration" value="{{ question.duration }}">
+      <span>your answer: {{ question.answer }}</span>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

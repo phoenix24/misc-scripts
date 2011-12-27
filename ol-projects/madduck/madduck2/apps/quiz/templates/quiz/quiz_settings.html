@@ -1,0 +1,28 @@
+{% extends "quiz/quiz.base.html" %}
+{% load i18n uni_form_tags %}
+{% block head_title %}{{ pagetitle }}{% endblock %}
+
+{% block app_body %}
+{% include "quiz/timeline-quiz.html" %}
+<ul class="ullist quizlt">
+  <li>
+    {% include "quiz/quiz_actions.html" %}
+    <div class="details">
+      <h2><a href="{% url quiz_view quizobj.id %}" class="title">{{ quizobj.name }}.</a></h2>
+      <span>not published on {{ quizobj.added }}.</span>
+    </div>
+    <div id="quiz-summary" class="quiz-summary show-summary">
+      <form class="quiz_new uniForm" method="POST" action="{% url quiz_settings quizobj.id %}">
+        {% csrf_token %}
+        <fieldset class="inlineLabels">
+          {{ quiz_settings_form|as_uni_form }}
+          <div class="form_block">
+            <input type="submit" value="{% trans "Save Settings" %}">
+            <input type="reset" value="{% trans "reset" %}">
+          </div>
+        </fieldset>
+      </form>
+    </div>
+  </li>
+</ul>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% load i18n analytics build ifsetting_tag %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" xml:lang="en-us" lang="en-us">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<title>{% block head_title %}{% endblock %}</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/uni-form.css"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="{{ MEDIA_URL }}css/teaser.css"/>
+	</head>
+	
+	<body class="container_16 {% block body_class %}{% endblock %}">
+		<div id="body" class="background">
+			{% block body %}{% endblock %}
+		</div>
+		
+		<div id="footer" class="background">
+			{% block footer %}
+			<a href="{% url login %}">{% trans "login" %}</a>&nbsp;|&nbsp;<a href="#">build {{ release }}:{{ git_revision }}</a>
+			{% endblock %}
+		</div>
+		
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/jquery-1.4.2.min.js"></script>
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/uni-form.jquery.js"></script>
+		<script type="text/javascript" src="{{ MEDIA_URL }}js/teaser.js"></script>
+		{% block extra_body %}{% endblock %}
+	</body>
+	<!-- analytics -->
+	{% ga %}
+</html>

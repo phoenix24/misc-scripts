@@ -1,0 +1,43 @@
+{% extends "quiz/quiz.base.html" %}
+{% load i18n %}
+{% block head_title %}{{ pagetitle }}{% endblock %}
+
+{% block app_body %}
+<ul class="ullist quizlt">
+  {% for quizobj in quiz_list %}
+  <li class="{{ quizobj.type }} {{ quizobj.status }} {% if quizobj.published %}published{% endif%}">
+    {% include "quiz/quiz_actions.html" %}
+    <div class="details">
+      <h2><a href="{% url quiz_view quizobj.id %}" class="title">{{ quizobj.id }}, {{ quizobj.name }}</a></h2>
+      <!-- just for the reminder, ul/li better be used here. -->
+      <span><a href="{% url quiz_view quizobj.id %}">view test</a></span>
+      {% if quizobj.attempted %}<span><a href="{% url report_quiz quizobj.id %}">reports</a></span>{% endif %}
+      <span>{{ quizobj.type }}</span>
+      <span>{% if quizobj.published %}published{% else %}not published{% endif%}</span>
+      <span>{{ quizobj.status }}</span>
+      <span>{% if quizobj.attempted > 0 %}attempted({{ quizobj.attempted }}){% else %}not attempted(0){% endif %}</span>
+    </div>
+    <div id="quiz-summary" class="quiz-summary hide-summary">
+      <!-- just for the reminder, ul/li better be used here. -->
+      <p>{% if quizobj.published %}published{% else %}not published{% endif%} on {{ quizobj.created }}, authored by {{ quizobj.owner }}</p>
+      <p>owner : {{ quizobj.owner }}</p>
+      <p>subject : {{ quizobj.subject }}</p>
+      <p>class : {{ quizobj.classs }}</p>
+      <p>total_marks : {{ quizobj.total_marks }}</p>
+      <p>total_questions : {{ quizobj.total_questions }}</p>
+    </div>
+  </li>
+  {% empty %}
+    <p>Start Creating a Quiz, there are none yet.</p>
+  {% endfor %}
+</ul>
+<div id="forms_container" style="display:none;">
+  <div id="delete_quiz" class="fancybox-popup">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu risus diam, eget iaculis arcu. Fusce id enim quam, vel feugiat turpis. Etiam leo nibh, egestas sed pulvinar dignissim, vulputate nec ante. Etiam nulla</p>
+    <div class="buttons">
+      <a class="yes" href="#">Yes, Delete.</a>
+      <a class="no" href="#">No, Don't Delete Quiz.</a>
+    </div>
+  </div>
+</div>
+{% endblock %}

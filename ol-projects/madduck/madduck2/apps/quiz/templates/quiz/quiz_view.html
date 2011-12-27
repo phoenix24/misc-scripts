@@ -1,0 +1,74 @@
+{% extends "quiz/quiz.base.html" %}
+{% load i18n %}
+{% block head_title %}{{ pagetitle }}{% endblock %}
+
+{% block app_body %}
+  {% include "quiz/timeline-quiz.html" %}
+  <ul class="ullist quizlt">
+    <li class="{{ quizobj.type }} {{ quizobj.status }} {% if quizobj.published %}published{% endif%}">
+      {% include "quiz/quiz_actions.html" %}
+      <div class="details">
+        <h2><a href="{% url quiz_view quizobj.id %}" class="title">DETAILS - {{ quizobj.name }}</a></h2>
+        <span>{{ quizobj.type }}</span>
+        <span>{% if quizobj.published %}published{% else %}not published{% endif%}</span>
+        <span>{{ quizobj.status }}</span>
+        <span>{% if quizobj.attempted > 0 %}attempted({{ quizobj.attempted }}){% else %}not attempted(0){% endif %}</span>
+        {% if quizobj.attempted %}<span><a href="{% url report_quiz quizobj.id %}">reports</a></span>{% endif %}
+      </div>
+      <div id="quiz-summary" class="quiz-summary show-summary">
+        <!-- just for the reminder, ul/li better be used here. -->
+        <p>subject : {{ quizobj.subject }}</p>
+        <p>class : {{ quizobj.classs }}</p>
+        <p>total_marks : {{ quizobj.total_marks }}</p>
+        <p>total_questions : {{ quizobj.total_questions }}</p>
+        <p>note : {{ quizobj.note }}</p>
+      </div>
+    </li>
+    <li class="settings {{ quizobj.type }} {{ quizobj.status }} {% if quizobj.published %}published{% endif%}">
+      {% include "quiz/quiz_actions.html" %}
+      <div class="details">
+        <h2><a href="#" class="title">SETTINGS - {{ quizobj.name }}</a></h2>
+      </div>
+      <div id="quiz-summary" class="quiz-summary hide-summary">
+        <!-- @todo, ul/li better be used here. -->
+        <p>published : {{ quizobj.published }}</p>
+        <p>expiry_date : {{ quizobj.expiry_date }}</p>
+        <p>generate_report : {{ quizobj.generate_report }}</p>
+      </div>
+    </li>
+  </ul>
+  <ul class="ullist quizlt">
+    {% for question in questions %}
+    <li class="{{ question.type }} {{ question.status }}">
+      <ul class="ulaction quizaction">
+        <li><a id="south" class="action edit" href="{% url question_view quizobj.id question.number %}" title="Edit Question">edit</a></li>
+        <li><a id="south" class="action delete" href="{% url question_delete quizobj.id question.number %}" title="Delete Question">delete</a></li>
+        {% if not forloop.first %}
+        <li><a id="south" class="action move-up" href="{% url question_moveup quizobj.id question.number %}" title="Question Move Up">move-up</a></li>
+        {% endif %}
+        {% if not forloop.last %}
+        <li><a id="south" class="action move-down last" href="{% url question_movedown quizobj.id question.number %}" title="Question Move Down">move-down</a></li>
+        {% endif %}
+      </ul>
+      <div class="details">
+        <h2>{{ question.number }} <a href="{% url question_view quizobj.id question.number %}" class="title">{{ question.text }}</a></h2>
+        <!-- @todo, to use ul/li here. -->
+        <span>{{ question.type }}</span>
+        <span>{{ question.status }}</span>
+      </div>
+      <div id="quiz-summary" class="quiz-summary hide-summary">
+        <p></p>
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+  <div id="forms_container" style="display:none;">
+    <div id="delete_quiz">
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse eu risus diam, eget iaculis arcu. Fusce id enim quam, vel feugiat turpis. Etiam leo nibh, egestas sed pulvinar dignissim, vulputate nec ante. Etiam nulla</p>
+      <div class="buttons">
+        <a class="yes" href="#">Yes, Delete.</a>
+        <a class="no" href="#">No, Don't Delete quiz.</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
