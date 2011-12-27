@@ -18,6 +18,11 @@ h4. py-scripts
 
 random python scripts.
 
+h4. ol-projects
+
+old projects i no longer work on.
+
+
 h4. Todo
 
 1. mr-programs need to be mavenized.
