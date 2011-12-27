@@ -2,3 +2,14 @@ h2. MiscCodes.
 
 Miscellaneous Scripts/Programs.
 
+
+h3. mr-programs
+Bunch of java-hadoop mr-programs i wrote long back, while working on certain project.
+These are the remains.
+
+h3. sh-scripts
+random shell scripts.
+
+h3. py-scripts
+random python scripts.
+
