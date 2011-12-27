@@ -1,0 +1,244 @@
+body, html {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #777362 url(/images/global-bg.gif) repeat fixed center top;
+  color: #5A584B;
+  font-size: 0.85em;
+  height: 100%;
+  line-height: 1.6em;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  width: 100%;
+}
+
+img {
+  border: medium none;
+}
+
+img.border {
+  border: 1px solid #999999;
+}
+
+ol, ul {
+  margin-left: 20px;
+}
+
+h1 {
+  font-size: 4em;
+}
+
+h2 {
+  font-size: 1.9em;
+}
+
+h3 {
+  font-size: 1.7em;
+}
+
+h4 {
+  font-size: 1.5em;
+}
+
+h5 {
+  font-size: 1.3em;
+}
+
+h6 {
+  font-size: 1em;
+}
+
+h1 {
+  letter-spacing: -1px;
+  margin-bottom: 0.5em;
+  margin-top: 0.5em;
+}
+
+h2 {
+  letter-spacing: -1px;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h3, h4 {
+  letter-spacing: -0.5px;
+  margin-bottom: 0.2em;
+  margin-top: 1em;
+}
+
+h5, h6 {
+  letter-spacing: -0.5px;
+  margin-bottom: 0;
+  margin-top: 0.5em;
+}
+
+tr, td, th {
+  height: 30px;
+  border: 1px red solid;
+}
+
+li {
+  margin-top: 5px;
+} .footercolorlink {
+  color: #B78E00;
+}
+
+a {
+  color: #BC7134;
+  text-decoration: none;
+}
+
+a.largerfont {
+  color: #DB8900;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#topnav {
+  width: 600px;
+  text-align: right;
+  float: right;
+  margin: 5px 10px 0 0;
+}
+
+#footer, #topnavlink {
+  background-color: #2E2D26;
+  background-image: url(/images/footer-bg.gif);
+  clear: both;
+  margin: 0 auto 20px;
+  padding: 10px 20px;
+  text-align: left;
+}
+
+#footer {
+  width: 880px;
+}
+
+#footer a, #topnavlink a {
+  color: #C99C00;
+}
+
+#bandar_logo {
+  float: left;
+  margin-left: 0px;
+  height: 177px;
+  width: 172px;
+}
+
+#centerBody {
+  background-color: #FFFFFF;
+  background-image: url(/images/subhead-blank-bg.gif);
+  background-position: center top;
+  background-repeat: no-repeat;
+  margin: 0 auto;
+  padding: 0 20px 20px;
+  text-align: left;
+  width: 880px;
+  /*  height: 500px; */
+}
+
+#subnav {
+  float: left;
+  font-size: 0.9em;
+  margin: 0;
+  padding: 0;
+  text-align: right;
+}
+
+#subnav ul {
+  list-style-image: none;
+  list-style-position: outside;
+  list-style-type: none;
+}
+
+#subnav li {
+  border-right: 1px solid #5C4700;
+  display: inline;
+  margin-right: 4px;
+  padding-right: 6px;
+}
+
+#subnav li.last {
+  border-right: medium none;
+}
+
+.auth-form {
+  background-color: #E8F0F7;
+  margin: 40px 0;
+  padding: 40px 40px 20px;
+}
+
+.auth-form ul li {
+  padding: 20px 0;
+  border-bottom: 3px solid #fff;
+  height: 1%;
+  overflow: hidden;
+  clear: left;
+}
+
+.auth-form ul li p {
+  padding-top: 10px;
+  float: left;
+  width: 250px;
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.auth-form ul li input {
+  vertical-align: top;
+  width: 400px;
+  font-size: 2em;
+}
+
+.auth-form ul li select {
+  vertical-align: top;
+  width: 400px;
+  font-size: 2em;
+}
+
+#go-signup {
+  height: 50px;
+  width: 120px;
+  margin: 20px auto;
+  display: block;
+}
+
+.brainstorm-logo {
+  height: 40px;
+  font-weight: bold;
+  font-family: arial;
+  font-size: 25pt;
+}
+
+.status-msg {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.step {
+  height: 60px;
+}
+
+.userform {
+  margin-top: 100px;
+  padding-left: 200px;
+}
+
+.yimage {
+  border: 1px black solid;
+  padding: 3px;
+  margin: 3px;
+  height: 100px;
+  width: 100px;
+}
+
+div img {
+  margin: 3px;
+  padding: 3px;
+}

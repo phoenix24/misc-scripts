@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <title>Y! Images..</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <link href="/css/common.css" type="text/css" rel="stylesheet"/>
+  </head>
+  <body>
+    <div class="poweredby" style="padding: 5px;float:right;">
+      <img height="30" width="120" src="http://code.google.com/appengine/images/appengine-silver-120x30.gif" alt="Powered by Google App Engine" />
+      <img height="30" width="120" src="/images/yahoo_boss_logo.jpg" alt="Powered by YAHOO BOSS" />
+    </div>
+    {% for image in image_results %}
+      <div class="yimage">
+        <img src="{{ image.clickurl }}" height="100" width="100">
+      </div>
+    {% endfor %}
+  </body>
+</html>
