@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Tweet Count" basedir="." default="compile">
+	<property environment="env" />
+	<property file="build.properties" />
+
+	<property name="src" value="${basedir}/src" />
+	<property name="lib" value="${basedir}/lib" />
+	<property name="out" value="${basedir}/out" />
+	<property name="outlib" value="${basedir}/out/lib" />
+	<property name="bin" value="${basedir}/bin" />
+
+	<path id="libraries">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${HADOOP_HOME}">
+			<include name="*.jar" />
+		</fileset>
+		<fileset dir="${HADOOP_LIB}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+
+	<target name="init">
+		<mkdir dir="${out}" />
+		<mkdir dir="${outlib}" />
+		<mkdir dir="${bin}" />
+	</target>
+
+	<target name="clean">
+		<delete dir="${out}" />
+		<delete dir="${bin}" />
+	</target>
+
+	<!-- includes="**/*.class lib/*.jar" -->
+	<target name="jar">
+        <copydir dest="${outlib}" src="${lib}" />  
+		<jar destfile="${bin}/TweetCount.jar" basedir="${out}" compress="true">
+            <!-- fileset dir="${lib}" includes="*" / -->
+			<manifest>
+				<attribute name="Main-Class" value="com.fictious.TweetCount" />
+                <attribute name="Built-By" value="${user.name}" />
+                <attribute name="Implementation-Vendor" value="Fictious Inc." />
+                <attribute name="Implementation-Title" value="Tweet Counter" />
+                <attribute name="Implementation-Version" value="1.0.0beta2" />
+			</manifest>
+		</jar>
+	</target>
+
+	<target name="compile" depends="clean, init">
+		<javac srcdir="${src}" destdir="${out}" classpathref="libraries" debug="true" includeantruntime="false" />
+	</target>
+
+	<target name="build-all" depends="compile, jar" />
+</project>
