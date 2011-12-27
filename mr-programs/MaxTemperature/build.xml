@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="Max Temperature" basedir="." default="compile">
+	<property environment="env"/>
+	<property file="build.properties" />
+
+	<property name="src" value="${basedir}/src"/>
+	<property name="lib" value="${basedir}/lib"/>
+	<property name="out" value="${basedir}/out"/>
+	<property name="bin" value="${basedir}/bin"/>
+
+	<path id="libraries">
+		<fileset dir="${lib}">
+			<include name="*.jar" />
+		</fileset>
+	</path>
+	
+	<target name="init">
+		<mkdir dir="${out}" />
+		<mkdir dir="${bin}" />
+	</target>
+
+    <target name="clean">
+        <delete dir="${out}"/>
+        <delete dir="${bin}"/>
+    </target>
+
+	<target name="jar">
+		<jar destfile="${bin}/MaxTemperature.jar" basedir="${out}" includes="**/*.class">
+		    <manifest>
+		        <attribute name="Main-Class" value="com.fictious.MaxTemperature" />
+	        </manifest>
+		</jar>
+	</target>
+
+	<target name="compile" depends="clean, init">
+		<javac srcdir="${src}" destdir="${out}" classpathref="libraries" debug="true" includeantruntime="false"/>
+	</target>
+
+	<target name="build-all" depends="compile, jar"/>
+</project>
