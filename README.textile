@@ -18,3 +18,5 @@ h4. py-scripts
 
 random python scripts.
 
+h4. Todo
+mr-programs need to be mavenized.
